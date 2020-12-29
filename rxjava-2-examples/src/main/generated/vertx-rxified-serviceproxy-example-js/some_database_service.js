@@ -29,6 +29,7 @@ var SomeDatabaseService = function(j_val) {
   var j_someDatabaseService = j_val;
   var that = this;
 
+  var __super_getDataById = this.getDataById;
   /**
 
    @public
@@ -36,18 +37,21 @@ var SomeDatabaseService = function(j_val) {
    @param resultHandler {function} 
    @return {SomeDatabaseService}
    */
-  this.getDataById = function(id, resultHandler) {
+  this.getDataById =  function(id, resultHandler) {
     var __args = arguments;
     if (__args.length === 2 && typeof __args[0] ==='number' && typeof __args[1] === 'function') {
       j_someDatabaseService["getDataById(int,io.vertx.core.Handler)"](id, function(ar) {
-      if (ar.succeeded()) {
-        resultHandler(utils.convReturnJson(ar.result()), null);
-      } else {
-        resultHandler(null, ar.cause());
-      }
-    });
+        if (ar.succeeded()) {
+          resultHandler(utils.convReturnJson(ar.result()), null);
+        } else {
+          resultHandler(null, ar.cause());
+        }
+      }) ;
       return that;
-    } else throw new TypeError('function invoked with invalid arguments');
+    } else if (typeof __super_getDataById != 'undefined') {
+      return __super_getDataById.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
   };
 
   // A reference to the underlying Java delegate
@@ -57,11 +61,9 @@ var SomeDatabaseService = function(j_val) {
 };
 
 SomeDatabaseService._jclass = utils.getJavaClass("io.vertx.example.reactivex.services.serviceproxy.SomeDatabaseService");
-SomeDatabaseService._jtype = {
-  accept: function(obj) {
+SomeDatabaseService._jtype = {accept: function(obj) {
     return SomeDatabaseService._jclass.isInstance(obj._jdel);
-  },
-  wrap: function(jdel) {
+  },wrap: function(jdel) {
     var obj = Object.create(SomeDatabaseService.prototype, {});
     SomeDatabaseService.apply(obj, arguments);
     return obj;
@@ -70,8 +72,7 @@ SomeDatabaseService._jtype = {
     return obj._jdel;
   }
 };
-SomeDatabaseService._create = function(jdel) {
-  var obj = Object.create(SomeDatabaseService.prototype, {});
+SomeDatabaseService._create = function(jdel) {var obj = Object.create(SomeDatabaseService.prototype, {});
   SomeDatabaseService.apply(obj, arguments);
   return obj;
 }

@@ -17,22 +17,20 @@ class Client : io.vertx.core.AbstractVerticle()  {
       println("Circuit closed")
     })
 
-    var result = breaker.executeWithFallback({ future ->
+    breaker.executeWithFallback({ promise ->
       vertx.createHttpClient().getNow(8080, "localhost", "/", { response ->
         if (response.statusCode() != 200) {
-          future.fail("HTTP error")
+          promise.fail("HTTP error")
         } else {
-          response.exceptionHandler({ future.fail(it) }).bodyHandler({ buffer ->
-            future.complete(buffer.toString())
+          response.exceptionHandler({ promise.fail(it) }).bodyHandler({ buffer ->
+            promise.complete(buffer.toString())
           })
         }
       })
     }, { v ->
       // Executed when the circuit is opened
       return "Hello (fallback)"
-    })
-
-    result.setHandler({ ar ->
+    }, { ar ->
       // Do something with the result
       println("Result: ${ar.result()}")
     })

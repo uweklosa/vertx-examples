@@ -10,7 +10,7 @@
 
   <packaging>pom</packaging>
 
-  <version>3.5.0</version>
+  <version>3.9.0</version>
 
   <modules>
     <module>maven-simplest</module>
@@ -24,7 +24,6 @@
     <module>unit-examples</module>
     <module>metrics-examples</module>
     <module>mail-examples</module>
-    <module>openshift2-example</module>
     <module>openshift3-examples</module>
     <module>maven-service-factory-examples</module>
     <module>service-proxy-examples</module>
@@ -33,12 +32,15 @@
     <module>consul-examples</module>
     <module>mongo-examples</module>
     <module>jdbc-examples</module>
+    <module>reactive-sql-client-examples</module>
     <module>jca-examples</module>
     <module>sync-examples</module>
     <module>shell-examples</module>
     <module>heroku-example</module>
     <module>ignite-examples</module>
+    <module>infinispan-examples</module>
     <module>amqp-bridge-examples</module>
+    <module>amqp-proton-examples</module>
     <module>fatjar-examples/http2-fatjar</module>
     <module>fatjar-examples/ruby-fatjar</module>
     <module>camel-bridge-examples</module>
@@ -51,6 +53,10 @@
     <module>kafka-examples</module>
     <module>kotlin-examples/coroutines</module>
     <module>junit5-examples</module>
+    <module>zookeeper-examples</module>
+    <module>web-api-service-example</module>
+    <module>cassandra-examples</module>
+    <module>web-graphql-examples</module>
   </modules>
 
   <profiles>
@@ -85,7 +91,7 @@
       <repositories>
         <repository>
           <id>staging</id>
-          <url>https://oss.sonatype.org/content/repositories/iovertx-3720/</url>
+          <url>https://oss.sonatype.org/content/repositories/iovertx-3868/</url>
         </repository>
       </repositories>
     </profile>

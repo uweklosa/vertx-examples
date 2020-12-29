@@ -29,13 +29,14 @@ public class Server extends AbstractVerticle {
             .addOutboundPermitted(new PermittedOptions().setAddress("chat.message"));
 
     // Create the event bus bridge and add it to the router.
-    SockJSHandler ebHandler = SockJSHandler.create(vertx).bridge(opts);
+    SockJSHandler ebHandler = SockJSHandler.create(vertx);
+    ebHandler.bridge(opts);
     router.route("/eventbus/*").handler(ebHandler);
 
     // Create a router endpoint for the static content.
     router.route().handler(StaticHandler.create());
 
     // Start the web server and tell it to use the router to handle requests.
-    vertx.createHttpServer().requestHandler(router::accept).listen(8080);
+    vertx.createHttpServer().requestHandler(router).listen(8080);
   }
 }

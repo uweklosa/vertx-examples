@@ -22,10 +22,10 @@
 
   <groupId>io.vertx</groupId>
   <artifactId>junit5-examples</artifactId>
-  <version>3.5.1-SNAPSHOT</version>
+  <version>3.9.0</version>
 
   <properties>
-    <junit-jupiter.version>5.0.1</junit-jupiter.version>
+    <junit-jupiter.version>5.1.0</junit-jupiter.version>
     <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
     <junit-platform-surefire-provider.version>1.0.1</junit-platform-surefire-provider.version>
     <assertj-core.version>3.8.0</assertj-core.version>
@@ -84,7 +84,12 @@
       <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
-
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>${junit-jupiter.version}</version>
+        <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -115,5 +120,17 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>staging</id>
+      <repositories>
+        <repository>
+          <id>staging</id>
+          <url>https://oss.sonatype.org/content/repositories/iovertx-3868/</url>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
 
 </project>

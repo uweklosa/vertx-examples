@@ -6,7 +6,7 @@
 
   <groupId>io.vertx</groupId>
   <artifactId>osgi-examples</artifactId>
-  <version>3.5.0</version>
+  <version>3.9.0</version>
 
 
   <packaging>bundle</packaging>
@@ -15,7 +15,7 @@
     <dependencies>
       <dependency>
         <groupId>io.vertx</groupId>
-        <artifactId>vertx-dependencies</artifactId>
+        <artifactId>vertx-stack-depchain</artifactId>
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
@@ -41,7 +41,12 @@
 
     <dependency>
       <groupId>io.vertx</groupId>
-      <artifactId>vertx-rx-java</artifactId>
+      <artifactId>vertx-rx-java2</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-jwt</artifactId>
     </dependency>
 
     <dependency>
@@ -53,13 +58,6 @@
       <groupId>org.apache.felix</groupId>
       <artifactId>org.apache.felix.ipojo</artifactId>
       <version>1.12.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.osgi</groupId>
-      <artifactId>org.osgi.core</artifactId>
-      <version>5.0.0</version>
-      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -88,8 +86,8 @@
     <dependency>
       <groupId>org.apache.felix</groupId>
       <artifactId>org.apache.felix.framework</artifactId>
-      <version>5.4.0</version>
-      <scope>test</scope>
+      <version>5.6.10</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>javax.inject</groupId>
@@ -233,9 +231,20 @@
       <repositories>
         <repository>
           <id>staging</id>
-          <url>https://oss.sonatype.org/content/repositories/iovertx-3720/</url>
+          <url>https://oss.sonatype.org/content/repositories/iovertx-3868/</url>
         </repository>
       </repositories>
+    </profile>
+
+    <profile>
+      <id>equinox</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.eclipse.platform</groupId>
+          <artifactId>org.eclipse.osgi</artifactId>
+          <version>3.12.100</version>
+        </dependency>
+      </dependencies>
     </profile>
   </profiles>
 

@@ -4,7 +4,7 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.json.JsonObject;
 import io.vertx.example.util.Runner;
 import io.vertx.ext.auth.jwt.JWTAuth;
-import io.vertx.ext.auth.jwt.JWTOptions;
+import io.vertx.ext.jwt.JWTOptions;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.JWTAuthHandler;
 import io.vertx.ext.web.handler.StaticHandler;
@@ -43,7 +43,7 @@ public class Server extends AbstractVerticle {
       }
 
       ctx.response().putHeader("Content-Type", "text/plain");
-      ctx.response().end(jwt.generateToken(new JsonObject(), new JWTOptions().setExpiresInSeconds(60L).setPermissions
+      ctx.response().end(jwt.generateToken(new JsonObject(), new JWTOptions().setExpiresInSeconds(60).setPermissions
           (authorities)));
     });
 
@@ -115,7 +115,7 @@ public class Server extends AbstractVerticle {
     // Serve the non private static pages
     router.route().handler(StaticHandler.create());
 
-    vertx.createHttpServer().requestHandler(router::accept).listen(8080);
+    vertx.createHttpServer().requestHandler(router).listen(8080);
   }
 }
 

@@ -7,11 +7,11 @@ plugins {
 repositories {
   jcenter()
   maven {
-    url "https://oss.sonatype.org/content/repositories/iovertx-3720/"
+    url "https://oss.sonatype.org/content/repositories/iovertx-3868/"
   }
 }
 
-version = '3.5.0'
+version = '3.9.0'
 sourceCompatibility = '1.8'
 
 dependencies {
@@ -26,12 +26,7 @@ def mainVerticleName = 'io.vertx.example.HelloWorldVerticle'
 def watchForChange = 'src/**/*.java'
 
 // Vert.x will call this task on changes
-def doOnChange
-if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-  doOnChange = '.\\gradlew classes'
-} else {
-  doOnChange = './gradlew classes'
-}
+def doOnChange = ".${File.separator}gradlew classes"
 
 run {
   args = ['run', mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$mainClassName", "--on-redeploy=$doOnChange"]

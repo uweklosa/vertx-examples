@@ -24,7 +24,7 @@ var JProcessorService = Java.type('io.vertx.examples.service.ProcessorService');
 
 /**
  The service interface.
-
+ 
  @class
 */
 var ProcessorService = function(j_val) {
@@ -32,23 +32,29 @@ var ProcessorService = function(j_val) {
   var j_processorService = j_val;
   var that = this;
 
+  var __super_create = this.create;
+  var __super_createProxy = this.createProxy;
+  var __super_process = this.process;
   /**
 
    @public
    @param document {Object} 
    @param resultHandler {function} 
    */
-  this.process = function(document, resultHandler) {
+  this.process =  function(document, resultHandler) {
     var __args = arguments;
     if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
-      j_processorService["process(io.vertx.core.json.JsonObject,io.vertx.core.Handler)"](utils.convParamJsonObject(document), function(ar) {
-      if (ar.succeeded()) {
-        resultHandler(utils.convReturnJson(ar.result()), null);
-      } else {
-        resultHandler(null, ar.cause());
-      }
-    });
-    } else throw new TypeError('function invoked with invalid arguments');
+      j_processorService["process(io.vertx.core.json.JsonObject,io.vertx.core.Handler)"](utils.convParamJsonObject(__args[0]), function(ar) {
+        if (ar.succeeded()) {
+          __args[1](utils.convReturnJson(ar.result()), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      });
+    } else if (typeof __super_process != 'undefined') {
+      return __super_process.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
   };
 
   // A reference to the underlying Java delegate
@@ -58,11 +64,9 @@ var ProcessorService = function(j_val) {
 };
 
 ProcessorService._jclass = utils.getJavaClass("io.vertx.examples.service.ProcessorService");
-ProcessorService._jtype = {
-  accept: function(obj) {
+ProcessorService._jtype = {accept: function(obj) {
     return ProcessorService._jclass.isInstance(obj._jdel);
-  },
-  wrap: function(jdel) {
+  },wrap: function(jdel) {
     var obj = Object.create(ProcessorService.prototype, {});
     ProcessorService.apply(obj, arguments);
     return obj;
@@ -71,8 +75,7 @@ ProcessorService._jtype = {
     return obj._jdel;
   }
 };
-ProcessorService._create = function(jdel) {
-  var obj = Object.create(ProcessorService.prototype, {});
+ProcessorService._create = function(jdel) {var obj = Object.create(ProcessorService.prototype, {});
   ProcessorService.apply(obj, arguments);
   return obj;
 }
@@ -82,11 +85,11 @@ ProcessorService._create = function(jdel) {
  @param vertx {Vertx} 
  @return {ProcessorService}
  */
-ProcessorService.create = function(vertx) {
+ProcessorService.create =  function(vertx) {
   var __args = arguments;
   if (__args.length === 1 && typeof __args[0] === 'object' && __args[0]._jdel) {
-    return utils.convReturnVertxGen(ProcessorService, JProcessorService["create(io.vertx.core.Vertx)"](vertx._jdel));
-  } else throw new TypeError('function invoked with invalid arguments');
+    return utils.convReturnVertxGen(ProcessorService, JProcessorService["create(io.vertx.core.Vertx)"](__args[0]._jdel)) ;
+  }else throw new TypeError('function invoked with invalid arguments');
 };
 
 /**
@@ -96,11 +99,13 @@ ProcessorService.create = function(vertx) {
  @param address {string} 
  @return {ProcessorService}
  */
-ProcessorService.createProxy = function(vertx, address) {
+ProcessorService.createProxy =  function(vertx, address) {
   var __args = arguments;
   if (__args.length === 2 && typeof __args[0] === 'object' && __args[0]._jdel && typeof __args[1] === 'string') {
-    return utils.convReturnVertxGen(ProcessorService, JProcessorService["createProxy(io.vertx.core.Vertx,java.lang.String)"](vertx._jdel, address));
-  } else throw new TypeError('function invoked with invalid arguments');
+    return utils.convReturnVertxGen(ProcessorService, JProcessorService["createProxy(io.vertx.core.Vertx,java.lang.String)"](__args[0]._jdel, __args[1])) ;
+  }else throw new TypeError('function invoked with invalid arguments');
 };
 
+ProcessorService.NO_NAME_ERROR = JProcessorService.NO_NAME_ERROR;
+ProcessorService.BAD_NAME_ERROR = JProcessorService.BAD_NAME_ERROR;
 module.exports = ProcessorService;

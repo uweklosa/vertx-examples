@@ -1,19 +1,16 @@
 = Vert.x examples
 
-
-image:https://vertx.ci.cloudbees.com/buildStatus/icon?job=vert.x3-examples["Build Status",link="https://vertx.ci.cloudbees.com/view/vert.x-3/job/vert.x3-examples/"]
-
 This repository contains a range of examples so you can get up and running easily with Vert.x.
 
 == Maven users
 
-Start with the link:maven-simplest[simplest Maven example] to show you how setup a simple Vert.x project that uses
+Start with the link:maven-simplest[simplest Maven example] to show you how to setup a simple Vert.x project that uses
 Maven. You need to have Java 8 installed and set the `JAVA_HOME` environment variable to point to your Java 8
 installation.
 
 Use that as a template for setting up a Maven project with Vert.x.
 
-Progress to the link:maven-verticles/maven-verticle[simple Maven verticle example] to show you how to deploy your code as verticles in a Maven project. Also check link:maven-verticles[Maven verticles examples] to show how you can use Maven with Groovy, Ruby and JavaScript verticles.
+Progress to the link:maven-verticles/maven-verticle[simple Maven verticle example] to show you how to deploy your code as verticles in a Maven project. Also check link:maven-verticles[Maven verticles examples] to show how you can use Maven with Groovy, Ruby, and JavaScript verticles.
 
 Want to start right away, open the first example in Eclipse Che:
 
@@ -21,7 +18,7 @@ image:http://beta.codenvy.com/factory/resources/codenvy-contribute.svg["Open wor
 
 == Gradle users
 
-Start with the link:gradle-simplest[simplest Gradle example] to show you how setup a simple Vert.x project that uses Gradle.
+Start with the link:gradle-simplest[simplest Gradle example] to show you how to setup a simple Vert.x project that uses Gradle.
 
 Use that as a template for setting up a Gradle project with Vert.x.
 
@@ -53,8 +50,7 @@ services and features.
 
 Most of the examples have been written as verticles. For more information on verticles please consult the Vert.x core manual.
 
-Using verticles allows you to scale and run your code from the command line more easily, but if you prefer to embed, the
-exact same code in the verticles can also be run embedded if you prefer. It's really up to you. Verticles are
+Using verticles allows you to scale and run your code from the command line more easily, but if you prefer the same code in the verticles can also be run embedded. It's really up to you. Verticles are
 entirely optional in Vert.x.
 
 == Different languages
@@ -82,7 +78,7 @@ Just right click the main method or class in your IDE and run as... application 
 ==== Running at the command line
 
 If `vertx` is installed you can also run any verticle directly on the command line. This way of working may be of interest
-to you if you don't want to use Maven or Gradle or perhaps you don't use an IDE.
+to you, if you don't want to use Maven or Gradle or perhaps you don't use an IDE.
 
 Or perhaps you're just a command line kind of person.
 
@@ -150,7 +146,7 @@ The link:unit-examples/README.adoc[Vert.x Unit examples] shows how to use Vert.x
 
 === Vert.x JUnit 5 examples
 
-The `vertx-junit5` modules allows testing Vert.x asynchronous operations with JUnit 5.
+The `vertx-junit5` modules allow testing Vert.x asynchronous operations with JUnit 5.
 
 See link:junit5-examples/README.adoc[Vert.x JUnit 5 examples].
 
@@ -160,7 +156,7 @@ Vert.x for RxJava provides most of its APIs as RxJava so you can use those if yo
 
 RxJava is a great choice when you want to perform complex operations on multiple asynchronous streams of data.
 
-The link:rx-examples/README.adoc[Vert.x RxJava examples] contains a wide range of examples using Vert.x for RxJava
+The link:rxjava-2-examples/README.adoc[Vert.x RxJava 2] / link:rxjava-1-examples/README.adoc[Vert.x RxJava 1] examples contains a wide range of examples using Vert.x for RxJava
 
 === gRPC examples
 
@@ -183,7 +179,7 @@ mail server and the user credentials in the `MailLogin` example.
 
 === Maven Service Factory examples
 
-The link:maven-service-factory-examples[Vert.x Maven service factory examples] shows how to package a verticle that
+The link:maven-service-factory-examples/README.adoc[Vert.x Maven service factory examples] shows how to package a verticle that
 can be deployed using the Maven Service Factory. Such a deployment is also demonstrated using either the command line
 or the api.
 
@@ -198,33 +194,34 @@ The link:osgi-examples/README.adoc[Vert.x OSGi examples] contains a few examples
 
 === Cloud Foundry examples
 
-The link:cloudfoundry-examples/README.adoc[Vert.x Cloud Foundry example] shows how to deploy Vert.x application to a Cloud Foundry service or platform of your choice.
+The link:cloudfoundry-example/README.adoc[Vert.x Cloud Foundry example] shows how to deploy Vert.x application to a Cloud Foundry service or platform of your choice.
 
 === Docker examples
 
 The link:docker-examples/README.adoc[Vert.x Docker examples] shows how to deploy Vert.x application in Docker containers.
-It also contains an example of application that can be deployed on Fabric8.
+It also contains an example of the application that can be deployed on Fabric8.
 
 === Openshift & Kubernetes examples
-
-The link:openshift2-example/README.adoc[Vert.x OpenShift 2 example] shows how to deploy Vert.x application to
-OpenShift 2 following the two proposed approaches: using the DIY cartridge or the vert.x 3 cartridge.
 
 The link:openshift3-examples/README.adoc[Vert.x OpenShift 3 examples] shows how to deploy Vert.x applications on
 Openshift 3 and Kubernetes. It also demonstrates clustering and service discovery.
 
 === Spring Examples
 
-The link:spring-examples[Vert.x Spring Examples] shows how vert.x application can be integrated inside a Spring
+The link:spring-examples/README.adoc[Vert.x Spring Examples] shows how vert.x application can be integrated inside a Spring
 ecosystem.
 
 === Redis example
 
-The link:redis-examples/README.adoc[Vert.x Redis Example] shows how you can interact with Redis using the vert.x redis client.
+The link:redis-examples/README.adoc[Vert.x Redis Example] shows how you can interact with Redis using the vert.x Redis client.
 
 === Mongo example
 
-The link:mongo-examples/README.adoc[Vert.x Mongo Example] shows how you can interact with MongoDB using the vert.x mongo client.
+The link:mongo-examples/README.adoc[Vert.x Mongo Example] shows how you can interact with MongoDB using the vert.x Mongo client.
+
+=== Reactive SQL client example
+
+The link:reactive-sql-client-examples/README.adoc[Reactive SQL Client Examples] shows how you can interact PostgreSQL or MySQL Databases using the Reactive SQL client.
 
 === JDBC example
 
@@ -257,7 +254,7 @@ This link:java9-examples/README.adoc[Java 9 examples] shows how a simple Java 9 
 
 The link:fatjar-examples/README.adoc[Vert.x fatjar Examples] show how you can build fatjar with Maven or Gradle.
 
-=== Http/2 Showcase
+=== HTTP/2 Showcase
 
 This link:http2-showcase/README.md[HTTP/2 Showcase] application highlights the benefits of HTTP/2 when dealing with latency on the web.
 
@@ -268,7 +265,15 @@ the event bus.
 
 === JCA example
 
-The Vert.x JCA Example project provides a JEE compliant application that enables to you deploy the application into a
- [Wildfly](http://wildfly.org) application server. While simple in implementation, the link:jca-examples[JCA examples]
+The link:jca-examples/README.adoc[Vert.x JCA Examples] provide a JEE compliant application that enables to you deploy the application into a
+ link:http://wildfly.org[Wildfly] application server. While simple in implementation, the JCA examples
  provides a good point of departure for your own development.
 
+=== Micrometer metrics examples
+
+The link:micrometer-metrics-examples/README.adoc[Vert.x Micrometer metrics examples] show how to collect Vert.x metrics
+with link:https://micrometer.io/[Micrometer] and send them to backends such as Prometheus or InfluxDB.
+
+=== GraphQL examples
+
+The link:web-graphql-examples/README.adoc[Vert.x Web GraphQL] examples contain simple client/server GraphQL applications built with https://vertx.io/docs/vertx-web-graphql/java/[Vert.x Web GraphQL] and the https://www.graphql-java.com/[GraphQL-Java] library.

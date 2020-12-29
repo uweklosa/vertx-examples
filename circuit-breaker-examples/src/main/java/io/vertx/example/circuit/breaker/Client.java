@@ -3,7 +3,6 @@ package io.vertx.example.circuit.breaker;
 import io.vertx.circuitbreaker.CircuitBreaker;
 import io.vertx.circuitbreaker.CircuitBreakerOptions;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
 import io.vertx.core.Launcher;
 
 /**
@@ -31,22 +30,20 @@ public class Client extends AbstractVerticle {
           System.out.println("Circuit closed");
         });
 
-    Future<String> result = breaker.executeWithFallback(future -> {
+    breaker.executeWithFallback(promise -> {
       vertx.createHttpClient().getNow(8080, "localhost", "/", response -> {
         if (response.statusCode() != 200) {
-          future.fail("HTTP error");
+          promise.fail("HTTP error");
         } else {
-          response.exceptionHandler(future::fail).bodyHandler(buffer -> {
-            future.complete(buffer.toString());
+          response.exceptionHandler(promise::fail).bodyHandler(buffer -> {
+            promise.complete(buffer.toString());
           });
         }
       });
     }, v -> {
       // Executed when the circuit is opened
       return "Hello (fallback)";
-    });
-
-    result.setHandler(ar -> {
+    }, ar -> {
       // Do something with the result
       System.out.println("Result: " + ar.result());
     });

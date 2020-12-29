@@ -22,14 +22,14 @@ public class DashboardVerticle extends AbstractVerticle {
     // The event bus bridge handler
     BridgeOptions options = new BridgeOptions();
     options.setOutboundPermitted(Collections.singletonList(new PermittedOptions().setAddress("dashboard")));
-    router.route("/eventbus/*").handler(SockJSHandler.create(vertx).bridge(options));
+    router.mountSubRouter("/eventbus", SockJSHandler.create(vertx).bridge(options));
 
     // The web server handler
     router.route().handler(StaticHandler.create().setCachingEnabled(false));
 
     // Start http server
     HttpServer httpServer = vertx.createHttpServer();
-    httpServer.requestHandler(router::accept).listen(8080, ar -> {
+    httpServer.requestHandler(router).listen(8080, ar -> {
       if (ar.succeeded()) {
         System.out.println("Http server started");
       } else {

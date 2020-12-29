@@ -24,7 +24,7 @@ router.get("/api/newToken").handler({ ctx ->
 
   ctx.response().putHeader("Content-Type", "text/plain")
   ctx.response().end(jwt.generateToken([:], [
-    expiresInSeconds:60L,
+    expiresInSeconds:60,
     permissions:authorities
   ]))
 })
@@ -97,4 +97,4 @@ router.get("/api/protected/defcon3").handler({ ctx ->
 // Serve the non private static pages
 router.route().handler(StaticHandler.create())
 
-vertx.createHttpServer().requestHandler(router.&accept).listen(8080)
+vertx.createHttpServer().requestHandler(router).listen(8080)

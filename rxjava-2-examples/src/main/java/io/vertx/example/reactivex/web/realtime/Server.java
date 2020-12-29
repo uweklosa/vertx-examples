@@ -23,7 +23,7 @@ public class Server extends AbstractVerticle {
 
     Router router = Router.router(vertx);
 
-    router.route("/news-feed/*").handler(SockJSHandler.create(vertx).socketHandler(sockJSSocket -> {
+    router.mountSubRouter("/news-feed/*", SockJSHandler.create(vertx).socketHandler(sockJSSocket -> {
 
       // Consumer the event bus address as an Flowable
       Flowable<String> msg = vertx.eventBus().<String>consumer("news-feed")
@@ -42,7 +42,7 @@ public class Server extends AbstractVerticle {
     // Serve the static resources
     router.route().handler(StaticHandler.create());
 
-    vertx.createHttpServer().requestHandler(router::accept).listen(8080);
+    vertx.createHttpServer().requestHandler(router).listen(8080);
 
     // Publish a message to the address "news-feed" every second
     vertx.setPeriodic(1000, t -> vertx.eventBus().publish("news-feed", "news from the server!"));
